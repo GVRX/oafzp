@@ -45,9 +45,9 @@ fzp.writeGDS("fzp.gds")
 fzp.display()  
 ```
 
-##License
+## License
 
-This project is released under the GNU GPL2 license. See [a relative link](LICENSE)
+This project is released under the GNU GPL2 license. See [LICENSE](LICENSE)
 for details.
 
 Grant van Riessen, 2025
