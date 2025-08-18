@@ -209,3 +209,5 @@ __marimo__/
 deprecated/*
 
 output/*
+
+.DS_Store/*
