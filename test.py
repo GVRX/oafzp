@@ -10,7 +10,7 @@ Grant van Riessen, La Trobe University, 2025
 
 import numpy as np
 import math 
-from zputils import *
+from zputils import converUnits
 from oafzp import OAFZP
 
 wavelength = convertUnits(185, 'nm')  # Wavelength in meters
