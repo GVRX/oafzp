@@ -318,11 +318,15 @@ class OAFZP:
         #print (f"First zone included in aperture: {self.zoneSubset[0] if self.zoneSubset else 'None'}")   
         #print (f"Last zone included in aperture: {self.zoneSubset[-1] if self.zoneSubset else 'None'}")  
         #print(f"{len(self.zoneSubset)} of {i} zones included in aperture rectangle.")   
-
+    
+    def arc_tolerance(r, base=2.0, rel=2e-3):
+        # units = your layout units (e.g., nm if that’s what you use)
+        # use the larger of an absolute and a relative tolerance
+        return max(base, rel * r)
 
     def writeGDS(self, filename='fzp.gds'):
         """Save the GDS library to a file."""
-        self.lib.write_gds(filename)
+        self.lib.write_gds(filename,max_points=8190)
         print(f"GDS file saved as {filename}")
     
     def writeSVG(self, filename='fzp.svg'):
@@ -330,9 +334,18 @@ class OAFZP:
         self.cell.write_svg(filename)
         print(f"SVG file saved as {filename}")
 
-    def writeOAS(self, filename='fzp.oas'):
+    def writeOAS(self, filename='fzp.oas',compression=1):
         """Save the cell as an OAS file."""
-        self.cell.write_oas(filename)
+
+        # Faster/smaller: OASIS
+        # 0 = fastest, 9 = smallest (default 6)
+        lib.write_oas(
+            f"{filename}",
+            compression_level=compression,        
+            detect_rectangles=True,
+            detect_trapezoids=True,
+            #circletolerance=0,          # allow auto-detection of circles
+        )
         print(f"OAS file saved as {filename}")
 
 

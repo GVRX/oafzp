@@ -1,6 +1,6 @@
 # Off-Axis Fresnel Zone Plate (OAFZP) Generator
 
-This repository contains Python code for generating **off-axis Fresnel zone plate (OAFZP)** designs as subsections of conventional FZP and exporting them in **GDSII** format. The code supports flexible definition of the FZP geometry and a photon-block layer, and export areas. The code is intended to be used to develop lithographic fabrication workflows.  
+This repository contains Python code for generating **off-axis Fresnel zone plate (OAFZP)** designs as subsections of conventional FZP and exporting them in **GDSII** or **OASIS** format. The code supports flexible definition of the FZP geometry and a photon-block layer, and export areas. The code is intended to be used to develop lithographic fabrication workflows.  
 
 ## Usage
 
@@ -38,12 +38,22 @@ This repository contains Python code for generating **off-axis Fresnel zone plat
     fzp.build()  # generate to the OAFZP
     ```
 
-3. Write to GDSII file and/or display in GDS viewer
+3. Write outputput files...
+
+GDS (very slow for large number of polygon-vertices):
 
     ```python
     fzp.writeGDS("fzp.gds")  
     fzp.display()  
     ```
+
+OAS (fast):
+
+    ```python
+    fzp.writeOAS(self, filename='fzp.oas',compression=1):
+    ```
+
+ Compression is an optional argument with default value 1  (0 = fastest, 9 = smallest).
 
 ## License
 
