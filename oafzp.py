@@ -339,7 +339,7 @@ class OAFZP:
 
         # Faster/smaller: OASIS
         # 0 = fastest, 9 = smallest (default 6)
-        lib.write_oas(
+        self.lib.write_oas(
             f"{filename}",
             compression_level=compression,        
             detect_rectangles=True,
